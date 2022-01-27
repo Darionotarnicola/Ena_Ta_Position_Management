@@ -1,0 +1,6 @@
+<mvc:View controllerName="ena.controller.App" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<Shell id="App">
+		<App id="app">
+		</App>
+	</Shell>
+</mvc:View>

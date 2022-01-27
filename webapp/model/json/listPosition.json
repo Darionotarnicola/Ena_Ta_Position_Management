@@ -1,0 +1,28 @@
+{
+    "Positions": [{
+            "ID_RICHIESTA": "1000" ,
+            "DESCRIPTION": "Manager",
+            "USER_ID": "dario.notarnicola@eng.it",
+            "COMMENT": "io speriamo che me la cavo",
+            "TITOLO": "cercasi manager",
+            "RAL": "50000",
+            "POSITION": "Manager",
+            "APPROVATORE": "dario.notarnicola@eng.it",
+            "APPROVALSTATUS": ""
+        
+    },
+    {
+            "ID_RICHIESTA": "1001" ,
+            "DESCRIPTION": "Senior",
+            "USER_ID": "dario.notarnicola@eng.it",
+            "COMMENT": "io speriamo che me la cavo",
+            "TITOLO": "cercasi Senior",
+            "RAL": "35000",
+            "POSITION": "Senior",
+            "APPROVATORE": "dario.notarnicola@eng.it",
+            "APPROVALSTATUS": ""
+        
+        }
+    ]  
+}
+    

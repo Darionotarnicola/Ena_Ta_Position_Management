@@ -1,0 +1,65 @@
+<mvc:View
+    controllerName="ena.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns:c="ena._Custom.controls"
+    displayBlock="true">
+	<Shell id="shell">
+		<App id="AppMain">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+                <HBox id="masterHBox" class="sapUiLargeMarginTop">
+                  <HBox id="Space1" width="15%">
+                  </HBox>
+
+                  <c:CustomTile id="CustomTile1" width="180px" height="175px" press="onPressTile">
+                    <c:content>
+                        
+                        <l:VerticalLayout id="vert1">
+                            <l:HorizontalLayout id="hor1" class="sapUiSmallMarginTop">
+                                <Text id="AllPosition" text="All Position:"  class="sapUiSmallMarginEnd"/>
+                                <Text id="AllPositionText" text="{Kpis>/Tile_1/all_position}"/>
+                            </l:HorizontalLayout>
+                            <l:HorizontalLayout id="hor2" class="sapUiSmallMarginTop">
+                                 <Text id="Ready" text="Ready" class="sapUiSmallMarginEnd"/>
+                                <Text id="ReadyText" text="{Kpis>/Tile_1/ready}" />
+                            </l:HorizontalLayout>
+                            <l:HorizontalLayout id="hor3" class="sapUiSmallMarginTop">
+                                <Text id="Vacant" text="Vacant" class="sapUiSmallMarginEnd"/>
+                                <Text id="VacantText" text="{Kpis>/Tile_1/vacant}" />
+                            </l:HorizontalLayout>
+                            <l:HorizontalLayout id="hor4" class="sapUiSmallMarginTop">
+                                 <Text id="Posted" text="Posted" class="sapUiSmallMarginEnd"/>
+                                 <Text id="postedText" text="{Kpis>/Tile_1/posted}" />
+                            </l:HorizontalLayout>
+                            <Button id="test" press="onPressTile" width="180px" text="Entra" ></Button>
+                        </l:VerticalLayout>
+                    </c:content>
+                  </c:CustomTile>
+
+                   <c:CustomTile id="request" width="180px" height="175px" press="onPressTile">
+                    <c:content>
+                        
+                        <l:VerticalLayout id="_IDGenVerticalLayout1" >
+                            <l:HorizontalLayout id="_IDGenHorizontalLayout1"  class="sapUiSmallMarginTop">
+                                <Text id="RequestsReiceved" text="Requests Reiceved"  class="sapUiSmallMarginEnd"/>
+                            </l:HorizontalLayout>
+                            <l:HorizontalLayout id="_IDGenHorizontalLayout2"  class="sapUiLargeMarginTop sapUiMediumMarginTop">
+                                 <Text id="NumberRequests" text="{Kpis>/Tile_1/posted}" />
+                            </l:HorizontalLayout>
+                            <Button id="RequestsReicevedButton" press="onPressApproval" class="" width="180px" text="Entra" ></Button>
+                        </l:VerticalLayout>
+                    </c:content>
+                  </c:CustomTile>
+                  
+
+                </HBox>
+                   
+                     
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

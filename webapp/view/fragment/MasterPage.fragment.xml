@@ -1,0 +1,41 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	xmlns:ena.controls="ena._Custom.controls" xmlns:html="http://www.w3.org/1999/xhtml">
+	<ena.controls:MasterPage id="MasterPage" title="{i18n>MDSpa.title.master}"  navButtonPress="onNavPressBack" class="gesub-masterpage">
+		<ena.controls:subHeader>
+			<Toolbar id="toolBar" class="gesub-toolbar">
+				<content>
+					<Input id="input" placeholder="ciao"></Input>
+				</content>
+			</Toolbar>
+		</ena.controls:subHeader>
+		<ena.controls:content>
+			<List id="idPositionsMasterList" items="{ path : 'ListPositions>/', sorter : { path : 'ID_RICHIESTA' } }" noDataText="{i18n>MDSpa.list.noElement}" growing="true" mode="SingleSelectMaster" class="gesub-marginBottomFixMedium"
+				itemPress="onPressListItem" growingThreshold="15" growingScrollToLoad="true">
+				<items>
+					<CustomListItem id="listApproval" type="Active" >
+                    <!--selected="{Kpis>all_position}"-->
+						<HBox id="boxH" width="100%" alignItems="Center" justifyContent="SpaceAround">
+							<VBox id="boxV" width="70%" class=" sapUiSmallMarginTopBottom">
+								<HBox id="boxH1">
+									<Label id="label1" text="{ListPositions>ID_RICHIESTA}" class="sapUiSmallMarginEnd enl-space-character" design="Bold"/>
+									
+								</HBox>
+								<Label id="label" text="{MDSpaFilterDirectPdv>TXTLG}" >
+										<layoutData>
+											<!--<FlexItemData maxWidth="90%"/>-->
+										</layoutData>
+									</Label>
+							</VBox>
+							<!--<Image src="{/svgLogo}" width="2rem" />-->
+							<!--<Text text="{MDSpaFilterDirectPdv>ZCEIO008}"/>-->
+						</HBox>
+					</CustomListItem>
+				</items>
+			</List>
+		</ena.controls:content>
+		<ena.controls:customFooterContent>
+			<ToolbarSpacer id="_IDGenToolbarSpacer1"/>
+			<Button id="Direct" icon="sap-icon://filter"  press="onPressFilterDirectPdv"/>
+		</ena.controls:customFooterContent>
+	</ena.controls:MasterPage>
+</core:FragmentDefinition>

@@ -1,0 +1,54 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:ena.controls="ena._Custom.controls"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:common="sap.suite.ui.commons"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:si="sap.suite.ui.commons.statusindicator"
+    xmlns:tnt="sap.tnt">
+    <ena.controls:DetailPage id="DetailPage" class="gesub-backColorWhite">
+        <ena.controls:ObjectHeader id="HeaderDirect" iconColor="green" title="" visible="true" number="{view>/ListMDSpa/ZCEIO010}">
+            <ena.controls:attributes>
+                <ObjectAttribute id="Attr1" text="{i18n>FirstStep.Wizard.CostCenter}: {view>/ListPositionsSelected/ID_RICHIESTA}"/>
+                <ObjectAttribute id="Attr2" text="{view>/ListPositionsSelected/POSITION}"/>
+            </ena.controls:attributes>
+            <ena.controls:statuses>
+                <ObjectStatus id="objStatus1" text="{view>/ListPositionsSelected/RAL}"></ObjectStatus>
+                <!--<ObjectStatus icon="sap-icon://full-screen" id="ExpandDirect" active="true" visible="true" press="onPressExpandDirect"></ObjectStatus>-->
+            </ena.controls:statuses>
+        </ena.controls:ObjectHeader>
+        <ena.controls:content class="MD-content-splitApp">
+            <!--<core:Fragment fragmentName="com.buyerui.gesub_cockpit.buyer_gesub_cockpit.view.fragments.NoContractSelected.NoContractSelected" type="XML"/>-->
+            <VBox id="_IDGenVBox1" class="sapUiSmallMargin">
+                <f:SimpleForm id="SimpleFormDisplay354" editable="false" layout="ResponsiveGridLayout" title="Address" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
+                    <f:content>
+                        <Label id="_IDGenLabel1" text="ID Request" />
+                        <Text id="ID_Request" text="{view>/ListPositionsSelected/ID_RICHIESTA}" />
+                        <Label id="_IDGenLabel8" text="Owner" />
+                        <Text id="Position" text="{view>/ListPositionsSelected/POSITION}" />
+                        <Label id="_IDGenLabel2" text="Description" />
+                        <Text id="Description" text="{view>/ListPositionsSelected/DESCRIPTION}" />
+                        <Label id="_IDGenLabel3" text="User Id" />
+                        <Text id="User_Id" text="{view>/ListPositionsSelected/USER_ID}" />
+                        <Label id="_IDGenLabel4" text="Comment" />
+                        <Text id="Comment" text="{view>/ListPositionsSelected/COMMENT}" />
+                        <Label id="_IDGenLabel5" text="Title Request" />
+                        <Text id="Title_Request" text="{view>/ListPositionsSelected/TITOLO}" />
+                        <Label id="_IDGenLabel6" text="Annual Gross Salary" />
+                        <Text id="Annual_Gross_Salary" text="{view>/ListPositionsSelected/RAL}" />
+                        <Label id="_IDGenLabel7" text="Owner" />
+                        <Text id="Owner" text="{view>/ListPositionsSelected/APPROVATORE}" />
+                    </f:content>
+                </f:SimpleForm>
+            </VBox>
+        </ena.controls:content>
+        <ena.controls:customFooterContent class="footerContentDetailPage">
+            <!--<ToolbarSpacer/>-->
+            <Button id="Send" icon="sap-icon://ppt-attachment" press="onPressStartWF" text="Send"></Button>
+            <Button id="Approve" icon="sap-icon://ppt-attachment" press="onPressApprove" text="Approve"></Button>
+            <Button id="Reject" icon="sap-icon://excel-attachment" press="onPressAFO" text="Reject"></Button>
+        </ena.controls:customFooterContent>
+    </ena.controls:DetailPage>
+</core:FragmentDefinition>

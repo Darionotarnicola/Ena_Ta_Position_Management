@@ -1,0 +1,11 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	xmlns:ena.controls="ena._Custom.controls" xmlns:html="http://www.w3.org/1999/xhtml">
+	<ena.controls:SplitApp id="idDirectPdvMasterDetail" mode="ShowHideMode" class="MD-shell-noPadding">
+		<ena.controls:masterPages>
+			<core:Fragment fragmentName="ena.view.fragment.MasterPage" type="XML"/>
+		</ena.controls:masterPages>
+		<ena.controls:detailPages>
+			<core:Fragment fragmentName="ena.view.fragment.DetailPage" type="XML"/>
+		</ena.controls:detailPages>
+	</ena.controls:SplitApp>
+</core:FragmentDefinition>

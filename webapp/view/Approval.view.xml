@@ -1,0 +1,4 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	controllerName="ena.controller.Approval" xmlns:html="http://www.w3.org/1999/xhtml">
+	<core:Fragment fragmentName="ena.view.fragment.SplitApp" type="XML"/>
+</mvc:View>

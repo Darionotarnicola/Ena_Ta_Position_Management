@@ -1,0 +1,26 @@
+{
+    "KpiForTile": {
+        "Tile_1": {
+            "id": "tile_1",
+            "all_position": "1220",
+            "ready": "500",
+            "vacant": "500",
+            "posted": "220"
+        },
+
+        "Tile_2": {
+            "id": "tile_1",
+            "all_position": "1000",
+            "ready": "400",
+            "vacant": "500",
+            "posted": "100"
+        },
+        "Tile_3": {
+            "id": "tile_1",
+            "all_position": "1500",
+            "ready": "500",
+            "vacant": "500",
+            "posted": "500"
+        }
+    }
+}
