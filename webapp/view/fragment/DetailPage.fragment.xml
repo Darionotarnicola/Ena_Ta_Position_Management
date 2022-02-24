@@ -46,7 +46,7 @@
         </ena.controls:content>
         <ena.controls:customFooterContent class="footerContentDetailPage">
             <!--<ToolbarSpacer/>-->
-            <Button id="Send" icon="sap-icon://ppt-attachment" press="onPressStartWF" text="Send"></Button>
+            <Button id="Send" icon="sap-icon://ppt-attachment" press="onPressReviewTask" text="Review"></Button>
             <Button id="Approve" icon="sap-icon://ppt-attachment" press="onPressApprove" text="Approve"></Button>
             <Button id="Reject" icon="sap-icon://excel-attachment" press="onPressAFO" text="Reject"></Button>
         </ena.controls:customFooterContent>

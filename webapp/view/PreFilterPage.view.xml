@@ -1,0 +1,40 @@
+<mvc:View controllerName="ena.controller.PreFilterPage"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns:c="ena._Custom.controls" displayBlock="true">
+
+    <Page id="pagePreFilterPage" title="{i18n>title}">
+        <form:SimpleForm id="Prova" editable="true" columnsM="1" columnsL="1" columnsXL="1" emptySpanM="0" emptySpanL="0" emptySpanXL="0" labelSpanM="3" labelSpanL="3" labelSpanXL="3" layout="ResponsiveGridLayout" class="sapUiLargeMarginBottom">
+            <form:content>
+                <!--Date-->
+                <Label required="true" id="DateLabel" text="{i18n>Label.Code}" class=" MD-TextColor"/>
+                <DatePicker valueFormat="yyyyMMdd" displayFormat="yyyy/MM/dd" id="OpenDateExpectedDirect" placeholder="Inserisci Data" change="onChangeDate" value="{Employee>/ListMDSpa/ZCEIO029}" width="30rem"/>
+                <!--Date-->
+                <Label required="true" id="LabelCode" text="{i18n>Label.dateFrom}" class=" MD-TextColor"/>
+                <Select forceSelection="false" class="selectBorder" selectedKey="{view>/ListOfFilter/Code}" width="30rem" id="Code" items="{ path: 'all>/', sorter: { path: 'ProductName' } }">
+                    <core:Item id="_IDGenItem1" key="{all>ProductName}" text="{all>ProductName}"/>
+                </Select>
+                <!--Position-->
+                <Label id="LabelPosition" text="{i18n>Label.dateFrom}" class=" MD-TextColor"/>
+                <!--<Select forceSelection="false" class="selectBorder" selectedKey="{view>/ListOfFilter/Position}" width="30rem" id="Position" items="{ path: 'all>/', sorter: { path: 'ProductID' } }">
+                    <core:Item id="_IDGenItem2" key="{all>ProductID}" text="{all>ProductID}"/>
+                </Select>-->
+                <MultiComboBox id="_IDGenMultiComboBox1" maxWidth="650px" items="{ path: 'all>/', sorter: { path: 'ProductID' } }"
+                    selectedKeys="{view>/ListOfFilter/Position}">
+                    <core:Item id="_IDGenItem2" key="{all>ProductID}" text="{all>ProductID}"/>
+                </MultiComboBox>
+            </form:content>
+        </form:SimpleForm>
+
+        <footer>
+            <OverflowToolbar id="_IDGenOverflowToolbar1">
+                <ToolbarSpacer id="_IDGenToolbarSpacer1"/>
+                <Button id="_IDGenButton1" type="Default" text="{i18n>Button.AdvancedFilter}"/>
+                <Button id="_IDGenButton2" press="onPressNext" type="Ghost" text="{i18n>Button.Next}"/>
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>

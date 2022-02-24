@@ -1,0 +1,36 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:u="sap.ui.unified"
+	xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<Dialog id="_IDGenDialog1" title="{i18n>MDSpa.Button.email}" icon="sap-icon://edit" state="Error" contentHeight="30rem" contentWidth="30rem"
+		class="gesub-editOrder">
+		<content>
+			<VBox id="_IDGenVBox1" justifyContent="SpaceAround"  class="sapUiSmallMarginTop sapUiSmallMarginBegin">
+				<HBox id="_IDGenHBox1" width="100%" alignItems="Center" justifyContent="Start" class="sapUiSmallMarginTop sapUiSmallMarginEnd">
+					<Label id="_IDGenLabel100" text="{i18n>MDSpa.Label.EmailFrom}:" class="sapUiSmallMarginEnd"/>
+				</HBox>
+				<HBox id="_IDGenHBox2" width="100%" alignItems="Center" justifyContent="Start" class="sapUiSmallMarginTop">
+					<Input id="_IDGenInput1101" width="25rem" value="{view>/SelectedItem/ProductID}">
+					</Input>
+				</HBox>
+				<!--<HBox id="_IDGenHBox3" width="100%" alignItems="Center" justifyContent="Start" class="sapUiSmallMarginTop sapUiSmallMarginEnd">
+					<Label id="_IDGenLabel102" text="{i18n>MDSpa.Label.CC}:" class="sapUiSmallMarginEnd"/>
+				</HBox>
+				<HBox id="_IDGenHBox4" width="100%" alignItems="Center" justifyContent="Start" class="sapUiSmallMarginTop">
+					<Input id="_IDGenInput2" width="25rem" value="{view>/CCEmail}">
+					</Input>
+				</HBox>
+				<VBox id="_IDGenVBox2" class="sapUiSmallMarginTop">
+					<Label id="_IDGenLabel104" text="Oggetto: " class="sapUiSmallMarginEnd "/>
+					<Input id="_IDGenInput104" value="{view>/SubSubject}" width="25rem"/>
+				</VBox>
+				<HBox id="_IDGenHBox5" width="100%" alignItems="Center" justifyContent="Start" class="sapUiSmallMarginTop">
+					<TextArea id="_IDGenTextArea1" width='25rem' height="8rem" value="{view>/BodyEmail}" placeholder="{i18n>MDSpa.Label.BodyEmail}"
+						class=" sapUiTinyMarginEnd"/>
+				</HBox>-->
+			</VBox>
+		</content>
+		<buttons>
+			<Button id="_IDGenButton1" text="{i18n>MDSpa.PopoverFilter.Close}" press="onPressCloseDialog"/>
+			<Button id="_IDGenButton2" text="{i18n>MDSpa.PopoverSendEmail}" press="onPressStartWF"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

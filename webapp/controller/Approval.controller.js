@@ -2,8 +2,15 @@ sap.ui.define([
     "ena/controller/BaseController",
     "sap/m/MessageBox",
     "sap/ui/model/json/JSONModel",
-    "ena/modules/ModelManager"
-], function (BaseController, MessageBox, JSONModel, ModelManager) {
+    "ena/modules/ModelManager",
+    "ena/modules/ApprovalManager",
+    "sap/m/Dialog",
+    "sap/m/DialogType",
+	"sap/m/Button",
+	"sap/m/ButtonType",
+    "sap/ui/core/ValueState",
+    "sap/m/Text"
+], function (BaseController, MessageBox, JSONModel, ModelManager, ApprovalManager, Dialog, DialogType, Button, ButtonType, ValueState , Text) {
     "use strict";
 
 
@@ -29,7 +36,7 @@ sap.ui.define([
         initMasterListPositions: function () {
             var oView = this.getView();
             var oViewModel = oView.getModel("view");
-            var sIdListPosition = oViewModel.getProperty("/ListPositionsView/ID_RICHIESTA");
+            var sIdListPosition = oViewModel.getProperty("/ListPositionsView/id");
 
             this._selectContract(sIdListPosition);
         },
@@ -44,7 +51,64 @@ sap.ui.define([
             oViewModel.setProperty("/enableModify", false);
             //	this._clearDataField();
 
-            this._selectContract(oPositionSelected.ID_RICHIESTA, sIdListItem);
+            this._selectContract(oPositionSelected.id, sIdListItem);
+        },
+
+        onPressReviewTask: function() {
+            var oView = this.getView();
+            var oViewModel = oView.getModel("view");
+            var oCurrentWorkflowId = oViewModel.getProperty("/CurrentId");
+            var sWorkflowId = oCurrentWorkflowId.currentId
+            ApprovalManager._ifError(sWorkflowId).then(function(oErrorResult){
+                this._openErrorDialog(oErrorResult);
+            }.bind(this));
+            
+        },
+
+        
+
+        _openErrorDialog: function(oErrorResult) {
+            if (oErrorResult.length !== 0) {
+                if (!this.oWarningMessageDialog) {
+                    this.oWarningMessageDialog = new Dialog({
+                        type: DialogType.Message,
+                        title: "Warning",
+                        state: ValueState.Warning,
+                        content: new Text({ text: oErrorResult[0].message }),
+                        beginButton: new Button({
+                            type: ButtonType.Emphasized,
+                            text: "OK",
+                            press: function () {
+                                this.oWarningMessageDialog.close();
+                                this.oWarningMessageDialog.destroy();
+                                this.oWarningMessageDialog = undefined;
+                            }.bind(this)
+                        })
+                    });
+                }
+                this.oWarningMessageDialog.open();
+            } else {
+                if (!this.oSuccessMessageDialog) {
+                    this.oSuccessMessageDialog = new Dialog({
+                        type: DialogType.Message,
+                        title: "Success",
+                        state: ValueState.Success,
+                        content: new Text({ text: "Ok" }),
+                        beginButton: new Button({
+                            type: ButtonType.Emphasized,
+                            text: "OK",
+                            press: function () {
+                                this.oSuccessMessageDialog.close();
+                                this.oSuccessMessageDialog.destroy();
+                                this.oSuccessMessageDialog = undefined;
+                            }.bind(this)
+                        })
+                    });
+                }
+    
+                this.oSuccessMessageDialog.open();
+            }
+            
         },
 
         _selectContract: function (sIdListPosition, sIdListItem) {
@@ -53,12 +117,11 @@ sap.ui.define([
             var oComponent = this.getOwnerComponent();
             var oListPositionsModel = oComponent.getModel("ListPositions")
             var aListPosition = oListPositionsModel.getData();
-
             var oSelectedList;
 
             if (sIdListPosition) {
                 oSelectedList = aListPosition.find(function (oListPosition) {
-                    return oListPosition.ID_RICHIESTA === sIdListPosition;
+                    return oListPosition.id === sIdListPosition;
                 });
                 if (oSelectedList === undefined) {
                     oSelectedList = aListPosition[0];
@@ -70,9 +133,13 @@ sap.ui.define([
             }
             if (oSelectedList) {
 
-                this._changeListSelection(oSelectedList.ID_RICHIESTA, sIdListItem);
-                //oSelectedListMDSpa.ZCEIO024 = oSelectedListMDSpa.ZCEIO024 === "No" ? false : true;
-                oViewModel.setProperty("/ListPositionsSelected", oSelectedList);
+                this._changeListSelection(oSelectedList.id, sIdListItem);
+                oViewModel.setProperty("/CurrentId", {currentId: oSelectedList.workflowInstanceId});
+                ApprovalManager._SelectedPosition(oSelectedList).then(function(data){
+                    var oView = this.getView();
+                    var oViewModel = oView.getModel("view");
+                    oViewModel.setProperty("/ListPositionsSelected", data);
+                }.bind(this));
                 // if (!bSkipScroll) {
                 // this._scrollToListItem();
                 // }
@@ -89,7 +156,7 @@ sap.ui.define([
             var oListPositionsModel = oComponent.getModel("ListPositions");
             var aListPositions = oListPositionsModel.getData();
             var oSelectedPosition = aListPositions.find(function (oListPositions) {
-                return oListPositions.ID_RICHIESTA === sIdListPosition;
+                return oListPositions.id === sIdListPosition;
             });
             var oPreviusSelectedIndex = aListPositions.findIndex(function (oListPositions) {
                 return oSelectedPosition.selected;
@@ -153,53 +220,8 @@ sap.ui.define([
             }, []);
         },*/
 
-        onPressStartWF: function () {
-            this.openBusyDialogLoadingView();
-
-            var startContext = this.getView().getModel("view").getProperty("ListPositionsSelected");
-            var workflowStartPayload = { definitionId: "demohr", context: startContext }
-
-            $.ajax({
-                url: "/ena/bpmworkflowruntime/v1/xsrf-token",
-                method: "GET",
-                headers: {
-                    "X-CSRF-Token": "Fetch"
-                },
-                success: function (result, xhr, data) {
-                    var token = data.getResponseHeader("X-CSRF-Token");
-                    if (token === null) return;
-
-                    // Start workflow 
-                    $.ajax({
-                        url: "/ena/bpmworkflowruntime/v1/workflow-instances",
-                        type: "POST",
-                        data: JSON.stringify(workflowStartPayload),
-                        headers: {
-                            "X-CSRF-Token": token,
-                            "Content-Type": "application/json"
-                        },
-                        async: false,
-                        success: function (data) {
-                            this.closeBusyDialogLoadingView();
-                            MessageBox.information("The workflow is started");
-                        },
-                        error: function (data) {
-                            this.closeBusyDialogLoadingView();
-                            MessageBox.information("failed");
-                        }
-                    });
-                },
-                error: function (data) {
-                    this.closeBusyDialogLoadingView();
-                    MessageBox.information("failed");
-                }.bind(this)
-            });
-
-        },
-
         onPressApprove: function () {
             this.openBusyDialogLoadingView();
-
             var startContext = this.getView().getModel("view").getProperty("ListPositionsSelected");
             var workflowStartPayload = { definitionId: "demohr", context: startContext }
             var sUrl = "/ena/bpmworkflowruntime/v1/workflow-instances" + ID; //da capire quale è l'istanza della singola richiesta
@@ -230,7 +252,7 @@ sap.ui.define([
                             "X-CSRF-Token": token,
                         },
                         data: JSON.stringify(aBody),
-                        
+
                         success: function (data) {
                             this.closeBusyDialogLoadingView();
                             MessageBox.information("The workflow is started");

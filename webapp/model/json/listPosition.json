@@ -7,8 +7,7 @@
             "TITOLO": "cercasi manager",
             "RAL": "50000",
             "POSITION": "Manager",
-            "APPROVATORE": "dario.notarnicola@eng.it",
-            "APPROVALSTATUS": ""
+            "APPROVATORE": "dario.notarnicola@eng.it"
         
     },
     {
@@ -19,9 +18,19 @@
             "TITOLO": "cercasi Senior",
             "RAL": "35000",
             "POSITION": "Senior",
-            "APPROVATORE": "dario.notarnicola@eng.it",
-            "APPROVALSTATUS": ""
+            "APPROVATORE": "dario.notarnicola@eng.it"
         
+        },
+        {
+            "TITOLO": "Titolo Richiesta OK 1",
+            "POSITION": "PM Junior",
+            "DESCRIPTION": "richiesta 4",
+            "APPROVATORE": "",
+            "CREATION_DATE": "",
+            "USER_ID": "corrado.scarfone@eng.it",
+            "ID_RICHIESTA": "000010",
+            "RAL": "49000",
+            "COMMENT": "commento3"
         }
     ]  
 }

@@ -19,7 +19,7 @@ modules:
         name: ena-uaa-key
   parameters:
     content:
-      instance:
+      subaccount:
         destinations:
         - Name: ena_repo_host
           ServiceInstanceName: ena-html5-srv
@@ -58,6 +58,11 @@ modules:
     - npm run build:cf
     supported-platforms: []
 resources:
+- name: workflow
+  type: org.cloudfoundry.existing-service
+  parameters:
+    service: workflow
+    service-plan: lite
 - name: ena-dest-srv
   type: org.cloudfoundry.managed-service
   parameters:

@@ -23,7 +23,7 @@ function (FilterOperator, Filter) {
                 console.error("Component is already set");
             }
         },
-
+        
         getPromiseForI18nModel: function () {
             var oComponent = this.getComponent();
             return new Promise(function (resolve) {

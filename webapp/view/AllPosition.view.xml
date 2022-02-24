@@ -1,5 +1,70 @@
-<mvc:View controllerName="ena.controller.AllPosition" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
-	<Page id="AllPosition" title="lista" >
-        
-    </Page>
+<mvc:View controllerName="ena.controller.AllPosition"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:t="sap.ui.table"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:tnt="sap.tnt">
+    <IconTabBar id="idIconTabBarNoIcons" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding">
+        <items>
+            <IconTabFilter id="_IDGenIconTabFilter1" text="Info" key="info">
+                <t:Table id="_IDGenTable1" rows="{ListProductFilter>/}" selectionMode="Single" visibleRowCount="13" paste="onPaste" ariaLabelledBy="title">
+                    <t:extension>
+                        <OverflowToolbar id="_IDGenOverflowToolbar1" style="Clear">
+                            <Title id="title" text="Products"/>
+                        </OverflowToolbar>
+                    </t:extension>
+                    <t:columns>
+                        <t:Column id="_IDGenColumn1" width="11rem">
+                            <Label id="_IDGenLabel1" text="Position" />
+                            <t:template>
+                                <Text id="_IDGenText10" text="{ListProductFilter>ProductID}" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column id="_IDGenColumn2" width="11rem">
+                            <Label id="_IDGenLabel2" text="Product Id" />
+                            <t:template>
+                                <Text id="_IDGenText11" text="{ListProductFilter>ProductID}" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column id="_IDGenColumn3" width="6rem" hAlign="End">
+                            <Label id="_IDGenLabel3" text="Quantity" />
+                            <t:template>
+                                <Text id="_IDGenText12" text="{ListProductFilter>ProductID}" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column id="_IDGenColumn4" width="6rem" hAlign="End">
+                            <Label id="_IDGenLabel4" text="Quantity" />
+                            <t:template>
+                                <Text id="_IDGenText13" text="{ListProductFilter>ProductID}" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column id="_IDGenColumn5" width="9rem">
+                            <Label id="_IDGenLabel5" text="Status" />
+                            <t:template>
+                                <MenuButton id="_IDGenMenuButton1" text="File">
+                                    <menu>
+                                        <Menu id="_IDGenMenu1" itemSelected="onMenuAction">
+                                            <MenuItem id="_IDGenMenuItem1" text="Edit" icon="sap-icon://edit" />
+                                            <MenuItem id="_IDGenMenuItem2" text="Save" icon="sap-icon://save" />
+                                            <MenuItem id="_IDGenMenuItem3" text="Open" icon="sap-icon://open-folder" />
+                                        </Menu>
+                                    </menu>
+                                </MenuButton>
+                            </t:template>
+                        </t:Column>
+
+                    </t:columns>
+                </t:Table>
+            </IconTabFilter>
+            <IconTabFilter id="_IDGenIconTabFilter2" text="Attachments" key="attachments">
+                <Text id="_IDGenText2" text="Attachments go here ..." />
+            </IconTabFilter>
+            <IconTabFilter id="_IDGenIconTabFilter3" text="Notes" key="notes">
+                <Text id="_IDGenText3" text="Notes go here ..." />
+            </IconTabFilter>
+            <IconTabFilter id="_IDGenIconTabFilter4" text="People" key="people">
+                <Text id="_IDGenText4" text="People content goes here ..." />
+            </IconTabFilter>
+        </items>
+    </IconTabBar>
 </mvc:View>

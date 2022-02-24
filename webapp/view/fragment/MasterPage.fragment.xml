@@ -9,7 +9,7 @@
 			</Toolbar>
 		</ena.controls:subHeader>
 		<ena.controls:content>
-			<List id="idPositionsMasterList" items="{ path : 'ListPositions>/', sorter : { path : 'ID_RICHIESTA' } }" noDataText="{i18n>MDSpa.list.noElement}" growing="true" mode="SingleSelectMaster" class="gesub-marginBottomFixMedium"
+			<List id="idPositionsMasterList" items="{ path : 'ListPositions>/', sorter : { path : 'activityId' } }" noDataText="{i18n>MDSpa.list.noElement}" growing="true" mode="SingleSelectMaster" class="gesub-marginBottomFixMedium"
 				itemPress="onPressListItem" growingThreshold="15" growingScrollToLoad="true">
 				<items>
 					<CustomListItem id="listApproval" type="Active" >
@@ -17,7 +17,7 @@
 						<HBox id="boxH" width="100%" alignItems="Center" justifyContent="SpaceAround">
 							<VBox id="boxV" width="70%" class=" sapUiSmallMarginTopBottom">
 								<HBox id="boxH1">
-									<Label id="label1" text="{ListPositions>ID_RICHIESTA}" class="sapUiSmallMarginEnd enl-space-character" design="Bold"/>
+									<Label id="label1" text="{ListPositions>subject}" class="sapUiSmallMarginEnd enl-space-character" design="Bold"/>
 									
 								</HBox>
 								<Label id="label" text="{MDSpaFilterDirectPdv>TXTLG}" >

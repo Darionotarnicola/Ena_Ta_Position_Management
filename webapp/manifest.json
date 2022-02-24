@@ -11,14 +11,14 @@
         "description": "{{appDescription}}",
         "dataSources": {
             "mainService": {
-                "uri": "/sap/opu/odata/",
-                "type": "OData",
-                "settings": {
-                    "annotations": [],
-                    "localUri": "localService/metadata.xml",
-                    "odataVersion": "4.0"
-                }
+            "uri": "/V2/Northwind/Northwind.svc/",
+            "type": "OData",
+            "settings": {
+              "annotations": [],
+              "localUri": "localService/metadata.xml",
+              "odataVersion": "2.0"
             }
+          }
         },
         "crossNavigation": {
             "inbounds": {
@@ -81,7 +81,17 @@
                     "earlyRequests": true,
                     "groupId": "$direct"
                 }
-            }
+            },
+            "Northwind": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                  "defaultOperationMode": "Server",
+                  "defaultBindingMode": "TwoWay",
+                  "defaultCountMode": "Inline",
+                  "preload": true
+                },
+                "dataSource": "mainService"
+              }
         },
         "resources": {
             "css": [
@@ -105,57 +115,57 @@
             },
             "routes": [
                 {
-                    "name": "RouteHome",
-                    "pattern": "",
-                    "target": [
-                        "TargetHome"
-                    ]
+                  "name": "RouteAllPosition",
+                  "pattern": "",
+                  "target": [
+                    "TargetAllPosition"
+                  ]
                 },
                 {
-                    "name": "RouteAllPosition",
-                    "pattern": "RouteAllPosition",
+                    "name": "RoutePreFilterPage",
+                    "pattern": "RoutePreFilterPage",
                     "target": [
-                        "TargetAllPosition"
+                      "TargetPreFilterPage"
                     ]
-                },
+                  },
                 {
-                    "name": "RouteApproval",
-                    "pattern": "RouteApproval",
-                    "target": [
-                        "TargetApproval"
-                    ]
+                  "name": "RouteApproval",
+                  "pattern": "RouteApproval",
+                  "target": [
+                    "TargetApproval"
+                  ]
                 }
-            ],
-            "targets": {
+              ],
+              "targets": {
                 "TargetApp": {
-                    "viewType": "XML",
-                    "transition": "slide",
-                    "clearControlAggregation": false,
-                    "viewId": "App",
-                    "viewName": "App"
-                },
-                "TargetHome": {
-                    "viewType": "XML",
-                    "transition": "slide",
-                    "clearControlAggregation": false,
-                    "viewId":"Home",
-                    "viewName": "Home"
+                  "viewType": "XML",
+                  "transition": "slide",
+                  "clearControlAggregation": false,
+                  "viewId": "App",
+                  "viewName": "App"
                 },
                 "TargetAllPosition": {
-                    "viewType": "XML",
-                    "transition": "slide",
-                    "clearControlAggregation": false,
-                    "viewId":"AllPosition",
-                    "viewName": "AllPosition"
+                  "viewType": "XML",
+                  "transition": "slide",
+                  "clearControlAggregation": false,
+                  "viewId": "AllPosition",
+                  "viewName": "AllPosition"
                 },
-                "TargetApproval": {
+                "TargetPreFilterPage": {
                     "viewType": "XML",
                     "transition": "slide",
                     "clearControlAggregation": false,
-                    "viewId":"Approval",
-                    "viewName": "Approval"
+                    "viewId": "PreFilterPage",
+                    "viewName": "PreFilterPage"
+                  },
+                "TargetApproval": {
+                  "viewType": "XML",
+                  "transition": "slide",
+                  "clearControlAggregation": false,
+                  "viewId": "Approval",
+                  "viewName": "Approval"
                 }
-            }
+              }
         },
         "rootView": {
             "viewName": "ena.view.App",

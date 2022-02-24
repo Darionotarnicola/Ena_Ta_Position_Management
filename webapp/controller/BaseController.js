@@ -9,7 +9,7 @@ sap.ui.define([
 	"use strict";
 
 	var oBaseController = {
-		formatter: formatter,
+		//formatter: formatter,
 
 		getResourceBundle: function() {
 			return this.getOwnerComponent().getModel("i18n").getResourceBundle();
